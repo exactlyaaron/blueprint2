@@ -1,0 +1,7 @@
+extends ../shared/template
+
+block content
+  h1= title
+  each floor in floors
+    h2=floor.name
+    img(src='#{floor.photo}')

@@ -1,0 +1,14 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  form(method='post', action='/users')
+    input(type='email', name='email', placeholder='Email', autofocus=true)
+    input(type='password', name='password')
+    button Register
+
+  form(method='post', action='/login')
+    input(type='email', name='email', placeholder='Email', autofocus=true)
+    input(type='password', name='password')
+    button Login

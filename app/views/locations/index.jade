@@ -1,0 +1,8 @@
+extends ../shared/template
+
+block content
+  h1= title
+  each location in locations
+    h2= location.name
+    h2= location.rate
+    hr
