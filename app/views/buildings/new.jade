@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1= title
+  h3= user.email
+
+  form(method='post', action='/buildings')
+    input(type='text', name='name', placeholder='Building name', autofocus=true)
+    input(type='number', name='x', placeholder='length')
+    input(type='number', name='y', placeholder='width')
+    select(name='locationId')
+      each location in locations
+        option(value=location._id) #{location.name}, $#{location.rate}
+
+
+    button Create

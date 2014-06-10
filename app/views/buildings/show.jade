@@ -1,0 +1,19 @@
+extends ../shared/template
+
+block content
+  h1= building.name
+  h3= location.name
+  h3 $#{cost.toFixed(2)}
+
+  button#create-room Create Room
+
+  select#floors(name='floor')
+    each floor in floors
+      option(data-img=floor.photo, value=floor._id)= floor.name
+
+  table
+    tbody
+      - for(var y = 0; y < building.y; y++)
+          tr
+            - for(var x = 0; x < building.x; x++)
+                td.cell(data-x=x, data-y=y)

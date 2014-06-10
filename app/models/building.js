@@ -2,6 +2,7 @@ var buildingCollection = global.nss.db.collection('buildings');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 var Room = traceur.require(__dirname + '/room.js');
+var Location = traceur.require(__dirname + '/location.js');
 var Mongo = require('mongodb');
 
 class Building{
@@ -30,6 +31,14 @@ class Building{
     this.rooms.push(room);
     buildingCollection.update({_id:this._id}, {$push:{rooms:room}}, ()=>fn(this));
   }
+
+  cost(fn){
+    Location.findById(this.locationId, location=>{
+      var cost = this.x * this.y * location.rate;
+      fn(cost);
+    });
+  }
+
 }
 
 module.exports = Building;
